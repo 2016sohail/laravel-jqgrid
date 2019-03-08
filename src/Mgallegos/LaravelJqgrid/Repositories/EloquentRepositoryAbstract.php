@@ -77,7 +77,7 @@ abstract class EloquentRepositoryAbstract implements RepositoryInterface{
 	{
 		return  intval($this->Database->whereNested(function($query) use ($filters)
 		{
-			foreach ($filters as $filter)
+			foreach ($filters['rules'] as $filter)
 			{
 				if($filter['op'] == 'is in')
 				{
@@ -233,7 +233,7 @@ abstract class EloquentRepositoryAbstract implements RepositoryInterface{
 
 		$rows = $this->Database->whereNested(function($query) use ($filters, $nodeId, $exporting)
 		{
-			foreach ($filters as $filter)
+			foreach ($filters['rules'] as $filter)
 			{
 				if($filter['op'] == 'is in')
 				{
