@@ -205,7 +205,7 @@ class JqGridJsonEncoder implements RequestedDataInterface {
 			$filters['rules'] = array();
 		}
 
-		$count = $Repository->getTotalNumberOfRows($filters['rules']);
+		$count = $Repository->getTotalNumberOfRows($filters);
 
 		if(empty($limit))
 		{
@@ -247,7 +247,7 @@ class JqGridJsonEncoder implements RequestedDataInterface {
 
 		if(empty($postedData['pivotRows']))
 		{
-			$rows = $Repository->getRows($limit, $start, $sidx, $sord, $filters['rules'], $nodeId, $nodeLevel, $exporting);
+			$rows = $Repository->getRows($limit, $start, $sidx, $sord, $filters, $nodeId, $nodeLevel, $exporting);
 
 			if($encodeRowsToUtf8)
 			{
