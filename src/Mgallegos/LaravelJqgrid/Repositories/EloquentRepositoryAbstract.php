@@ -132,7 +132,11 @@ abstract class EloquentRepositoryAbstract implements RepositoryInterface{
 					continue;
 				}
 
-				$query->where($filter['field'], $filter['op'], $filter['data']);
+				if($filters['groupOp'] == 'OR'){
+					$query->orWhere($filter['field'], $filter['op'], $filter['data']);
+				}else{
+					$query->where($filter['field'], $filter['op'], $filter['data']);
+				}
 			}
 		})
 		->count());
@@ -283,7 +287,11 @@ abstract class EloquentRepositoryAbstract implements RepositoryInterface{
 					continue;
 				}
 
-				$query->where($filter['field'], $filter['op'], $filter['data']);
+				if($filters['groupOp'] == 'OR'){
+					$query->orWhere($filter['field'], $filter['op'], $filter['data']);
+				}else{
+					$query->where($filter['field'], $filter['op'], $filter['data']);
+				}
 			}
 
 			if($this->treeGrid && !$exporting)
